@@ -2,7 +2,7 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
-import Helmet from "react-helmet"; // ✅ Add this line
+import Helmet from "react-helmet";
 
 const AdminLoginPage = () => {
   const [email, setEmail] = useState("");
@@ -36,7 +36,7 @@ const AdminLoginPage = () => {
         );
 
         if (roles.includes("ADMIN")) {
-          login(token, user); // Save token + user info
+          login(token, user);
           navigate("/admin/dashboard");
         } else {
           setError("Access denied. You are not an admin.");
@@ -68,7 +68,7 @@ const AdminLoginPage = () => {
           content="Login to the admin dashboard to manage users and control the system."
         />
         <meta property="og:image" content="/path/to/admin-login-image.jpg" />
-        <meta property="og:url" content="https://example.com/admin/login" />
+        <meta property="og:url" content="https://flex11-ekvitou.vercel.app/admin/login" />
         <meta name="twitter:title" content="Admin Login - Flex11" />
         <meta
           name="twitter:description"
@@ -77,7 +77,7 @@ const AdminLoginPage = () => {
         <meta name="twitter:image" content="/path/to/admin-login-image.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
         <title>Admin Login - Flex11</title>
-        <link rel="canonical" href="https://example.com/admin/login" />
+        <link rel="canonical" href="https://flex11-ekvitou.vercel.app/admin/login" />
       </Helmet>
 
       <div className="max-w-md mx-auto p-6 bg-white shadow">

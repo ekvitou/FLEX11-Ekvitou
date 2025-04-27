@@ -37,26 +37,26 @@ const UserLoginPage = () => {
           const adminMsg = "Admins must log in through the admin page.";
           setError(adminMsg);
           toast.error(adminMsg);
-          navigate("/"); // Navigate to home even if admin tries here
+          navigate("/"); 
           return;
         }
 
         login(data.accessToken);
         toast.success("Login successful!");
-        navigate("/");
+        navigate("/"); 
       } else {
         const errorMsg =
           data?.message || data?.error || "Invalid email or password";
         setError(errorMsg);
         toast.error(errorMsg);
-        navigate("/"); // Navigate to home even if login fails
+        navigate("/"); 
       }
     } catch (err) {
       console.error(err);
       const catchMsg = "An error occurred. Please try again.";
       setError(catchMsg);
       toast.error(catchMsg);
-      navigate("/"); // Navigate to home on network/server error too
+      navigate("/");
     }
   };
 
@@ -79,9 +79,12 @@ const UserLoginPage = () => {
         />
         <meta
           property="og:image"
-          content="https://example.com/images/login-banner.jpg"
+          content="https://flex11-ekvitou.vercel.app/images/login-banner.jpg"
         />
-        <meta property="og:url" content="https://example.com/login" />
+        <meta
+          property="og:url"
+          content="https://flex11-ekvitou.vercel.app/login"
+        />
         <meta name="twitter:title" content="User Login - Flex11" />
         <meta
           name="twitter:description"
@@ -89,11 +92,11 @@ const UserLoginPage = () => {
         />
         <meta
           name="twitter:image"
-          content="https://example.com/images/login-banner.jpg"
+          content="https://flex11-ekvitou.vercel.app/images/login-banner.jpg"
         />
         <meta name="twitter:card" content="summary_large_image" />
         <title>User Login - Flex11</title>
-        <link rel="canonical" href="https://example.com/login" />
+        <link rel="canonical" href="https://flex11-ekvitou.vercel.app/login" />
       </Helmet>
 
       <div className="min-h-screen flex justify-center items-center bg-gray-100">

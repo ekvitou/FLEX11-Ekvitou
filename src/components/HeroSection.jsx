@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const HeroSection = () => {
   return (
@@ -18,13 +19,15 @@ const HeroSection = () => {
               be style
             </h2>
             <h1 className="text-white text-5xl md:text-6xl font-semibold mb-6 leading-tight">
-              Enhancing your<br />inner beauty
+              Enhancing your
+              <br />
+              inner beauty
             </h1>
-            <a href="/register">
-            <button className="bg-white text-gray-800 font-medium py-3 px-8 mt-4 hover:bg-gray-100 transition duration-300">
-              SHOP NOW
-            </button>
-            </a>
+            <Link to="/register">
+              <button className="bg-white text-gray-800 font-medium py-3 px-8 mt-4 hover:bg-gray-100 transition duration-300">
+                SHOP NOW
+              </button>
+            </Link>
           </div>
         </div>
 

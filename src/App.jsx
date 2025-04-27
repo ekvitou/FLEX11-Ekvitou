@@ -32,10 +32,45 @@ import AdminRoute from "./routes/AdminRoute";
 // Toast
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Helmet from "react-helmet";
 
 const App = () => {
   return (
     <div className="min-h-screen flex flex-col">
+      <Helmet>
+        <meta
+          name="description"
+          content="Explore the best deals on your favorite products with Flex11. Enjoy fast shipping, exclusive discounts, and a seamless shopping experience."
+        />
+        <meta
+          name="keywords"
+          content="e-commerce, online shopping, discounts, deals, Flex11, products, fashion, electronics"
+        />
+        <meta name="author" content="Flex11" />
+        <meta
+          property="og:title"
+          content="Flex11 - Your Ultimate Shopping Destination"
+        />
+        <meta
+          property="og:description"
+          content="Explore the best deals on your favorite products with Flex11. Enjoy fast shipping, exclusive discounts, and a seamless shopping experience."
+        />
+        <meta property="og:image" content="/path/to/logo.jpg" />
+        <meta property="og:url" content="https://flex11-ekvitou.vercel.app" />
+        <meta
+          name="twitter:title"
+          content="Flex11 - Your Ultimate Shopping Destination"
+        />
+        <meta
+          name="twitter:description"
+          content="Explore the best deals on your favorite products with Flex11. Enjoy fast shipping, exclusive discounts, and a seamless shopping experience."
+        />
+        <meta name="twitter:image" content="/path/to/logo.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <link rel="canonical" href="https://flex11-ekvitou.vercel.app" />
+        <title>Flex11 - Your Ultimate Shopping Destination</title>
+      </Helmet>
+
       {/* Shared UI for all users */}
       <Navbar />
       <main className="flex-grow">
@@ -88,16 +123,16 @@ const App = () => {
           />
         </Routes>
       </main>
-      
+
       {/* JustForYou section placed above footer */}
       <JustForYou />
-      
+
       {/* Footer */}
       <Footer />
-      
+
       {/* Toast notifications */}
       <ToastContainer position="top-right" autoClose={3000} />
-      
+
       {/* Floating Chat Box */}
       <FloatingChatBox />
     </div>

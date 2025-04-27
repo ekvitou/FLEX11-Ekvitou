@@ -4,7 +4,7 @@ import {
   useGetAllUsersQuery,
   useDeleteUserMutation,
 } from "../store/userApiSlice";
-import Helmet from "react-helmet"; // ✅ Add this line
+import Helmet from "react-helmet";
 
 const AdminDashboardPage = () => {
   const { data, isLoading, isError, refetch } = useGetAllUsersQuery();
@@ -17,7 +17,7 @@ const AdminDashboardPage = () => {
     if (confirmDelete) {
       try {
         await deleteUser(uuid).unwrap();
-        refetch(); // Refresh the table
+        refetch();
       } catch (error) {
         console.error("Delete failed:", error);
         alert("Something went wrong while deleting.");
@@ -46,7 +46,10 @@ const AdminDashboardPage = () => {
           property="og:image"
           content="/path/to/admin-dashboard-image.jpg"
         />
-        <meta property="og:url" content="https://example.com/admin/dashboard" />
+        <meta
+          property="og:url"
+          content="https://flex11-ekvitou.vercel.app/admin/dashboard"
+        />
         <meta name="twitter:title" content="Admin Dashboard - Flex11" />
         <meta
           name="twitter:description"
@@ -58,7 +61,10 @@ const AdminDashboardPage = () => {
         />
         <meta name="twitter:card" content="summary_large_image" />
         <title>Admin Dashboard - Flex11</title>
-        <link rel="canonical" href="https://example.com/admin/dashboard" />
+        <link
+          rel="canonical"
+          href="https://flex11-ekvitou.vercel.app/admin/dashboard"
+        />
       </Helmet>
 
       <div className="p-6">

@@ -1,8 +1,8 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { updateQuantity, removeFromCart } from "../features/cart/cartSlice";
-import { useNavigate } from "react-router-dom"; // Import useNavigate for navigation
-import Helmet from "react-helmet"; // ✅ Add this line
+import { useNavigate } from "react-router-dom";
+import Helmet from "react-helmet"; 
 
 const CartPage = () => {
   const cartItems = useSelector((state) => state.cart.items);
@@ -42,7 +42,10 @@ const CartPage = () => {
           content="Review your cart at Flex11, adjust quantities, remove items, and proceed to checkout."
         />
         <meta property="og:image" content="/path/to/image.jpg" />
-        <meta property="og:url" content="https://example.com/cart" />
+        <meta
+          property="og:url"
+          content="https://flex11-ekvitou.vercel.app/cart"
+        />
         <meta name="twitter:title" content="Your Cart - Flex11" />
         <meta
           name="twitter:description"
@@ -50,8 +53,8 @@ const CartPage = () => {
         />
         <meta name="twitter:image" content="/path/to/image.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
+        <link rel="canonical" href="https://flex11-ekvitou.vercel.app/cart" />
         <title>Your Cart - Flex11</title>
-        <link rel="canonical" href="https://example.com/cart" />
       </Helmet>
 
       <div className="container mx-auto px-4 py-8">

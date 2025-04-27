@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify"; // ✅ Add this line
-import Helmet from "react-helmet"; // ✅ Add this line
+import { toast } from "react-toastify";
+import Helmet from "react-helmet";
 
 const RegisterPage = () => {
   const [formData, setFormData] = useState({
@@ -85,7 +85,7 @@ const RegisterPage = () => {
         />
         <meta
           name="keywords"
-          content="register, user registration, create account, online shopping, e-commerce, sign up"
+          content="register, user registration, fast-delivery, online shopping, e-commerce, sign up"
         />
         <meta name="author" content="Flex11" />
         <meta property="og:title" content="Register - Flex11" />
@@ -95,9 +95,12 @@ const RegisterPage = () => {
         />
         <meta
           property="og:image"
-          content="https://example.com/images/register-banner.jpg"
+          content="https://flex11-ekvitou.vercel.app/images/register-banner.jpg"
         />
-        <meta property="og:url" content="https://example.com/register" />
+        <meta
+          property="og:url"
+          content="https://flex11-ekvitou.vercel.app/register"
+        />
         <meta name="twitter:title" content="Register - Flex11" />
         <meta
           name="twitter:description"
@@ -105,11 +108,14 @@ const RegisterPage = () => {
         />
         <meta
           name="twitter:image"
-          content="https://example.com/images/register-banner.jpg"
+          content="https://flex11-ekvitou.vercel.app/images/register-banner.jpg"
         />
         <meta name="twitter:card" content="summary_large_image" />
         <title>Register - Flex11</title>
-        <link rel="canonical" href="https://example.com/register" />
+        <link
+          rel="canonical"
+          href="https://flex11-ekvitou.vercel.app/register"
+        />
       </Helmet>
 
       <div className="min-h-screen flex justify-center items-center bg-gray-100">

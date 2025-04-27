@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom"; // Import useNavigate
+import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../features/cart/cartSlice";
-import Helmet from "react-helmet"; // ✅ Add this line
+import Helmet from "react-helmet";
 
 const ProductDetailPage = () => {
   const { uuid } = useParams();
@@ -11,7 +11,7 @@ const ProductDetailPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const dispatch = useDispatch();
-  const navigate = useNavigate(); // Initialize navigate
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -34,7 +34,7 @@ const ProductDetailPage = () => {
 
   const handleAddToCart = () => {
     dispatch(addToCart({ ...product, quantity }));
-    navigate("/cart"); // Navigate to Cart page after adding to cart
+    navigate("/cart");
   };
 
   if (loading) return <p className="text-center py-10">Loading...</p>;
@@ -60,7 +60,7 @@ const ProductDetailPage = () => {
         <meta property="og:image" content={product.thumbnail} />
         <meta
           property="og:url"
-          content={`https://example.com/products/${uuid}`}
+          content={`https://flex11-ekvitou.vercel.app/products/${uuid}`}
         />
         <meta name="twitter:title" content={`${product.name} - Flex11`} />
         <meta
@@ -69,8 +69,11 @@ const ProductDetailPage = () => {
         />
         <meta name="twitter:image" content={product.thumbnail} />
         <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="canonical"
+          content={`https://flex11-ekvitou.vercel.app/products/${uuid}`}
+        />
         <title>{`${product.name} - Flex11`}</title>
-        <link rel="canonical" href={`https://example.com/products/${uuid}`} />
       </Helmet>
 
       <div className="container mx-auto px-4 py-8">

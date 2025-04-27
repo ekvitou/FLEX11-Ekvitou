@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import Helmet from "react-helmet"; // ✅ Add this line
+import Helmet from "react-helmet"; 
 
 const CheckoutPage = () => {
   const cartItems = useSelector((state) => state.cart.items);
@@ -24,10 +24,10 @@ const CheckoutPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Simulate successful checkout
+    
     alert("Checkout successful!");
-    // Optionally, navigate to a confirmation page or clear the cart
-    navigate("/order-confirmation"); // Redirect to confirmation page
+    
+    navigate("/order-confirmation"); 
   };
 
   const totalAmount = cartItems.reduce(
@@ -36,11 +36,11 @@ const CheckoutPage = () => {
   );
 
   const goHome = () => {
-    navigate("/"); // Navigate to home page
+    navigate("/"); 
   };
 
   const goBackToCart = () => {
-    navigate("/cart"); // Navigate to cart page
+    navigate("/cart");
   };
 
   return (
@@ -60,17 +60,29 @@ const CheckoutPage = () => {
           property="og:description"
           content="Proceed with checkout at Flex11, review your order, and select your payment method."
         />
-        <meta property="og:image" content="/path/to/image.jpg" />
-        <meta property="og:url" content="https://example.com/checkout" />
+        <meta
+          property="og:image"
+          content="https://flex11-ekvitou.vercel.app/images/checkout-banner.jpg"
+        />
+        <meta
+          property="og:url"
+          content="https://flex11-ekvitou.vercel.app/checkout"
+        />
         <meta name="twitter:title" content="Checkout - Flex11" />
         <meta
           name="twitter:description"
           content="Proceed with checkout at Flex11, review your order, and select your payment method."
         />
-        <meta name="twitter:image" content="/path/to/image.jpg" />
+        <meta
+          name="twitter:image"
+          content="https://flex11-ekvitou.vercel.app/images/checkout-banner.jpg"
+        />
         <meta name="twitter:card" content="summary_large_image" />
         <title>Checkout - Flex11</title>
-        <link rel="canonical" href="https://example.com/checkout" />
+        <link
+          rel="canonical"
+          href="https://flex11-ekvitou.vercel.app/checkout"
+        />
       </Helmet>
 
       <div className="container mx-auto px-4 py-8">
