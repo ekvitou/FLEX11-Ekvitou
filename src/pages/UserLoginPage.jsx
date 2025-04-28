@@ -2,7 +2,6 @@ import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaLock, FaEnvelope } from "react-icons/fa";
 import { AuthContext } from "../context/AuthContext";
-import { jwtDecode } from "jwt-decode";
 import { toast } from "react-toastify";
 import Helmet from "react-helmet";
 
@@ -37,26 +36,23 @@ const UserLoginPage = () => {
           const adminMsg = "Admins must log in through the admin page.";
           setError(adminMsg);
           toast.error(adminMsg); // Toast notification for Admin error
-          navigate("/");
-          return;
+          return; // Prevent redirecting to home page
         }
 
         login(data.accessToken);
         toast.success("Login successful!");
-        navigate("/");
+        navigate("/"); // Navigate to home page
       } else {
         const errorMsg =
           data?.message || data?.error || "Invalid email or password";
         setError(errorMsg);
-        toast.error(errorMsg); // Toast notification for general error
-        navigate("/");
+        toast.error(errorMsg); // Show error toast
       }
     } catch (err) {
       console.error(err);
       const catchMsg = "An error occurred. Please try again.";
       setError(catchMsg);
       toast.error(catchMsg); // Toast notification for network error
-      navigate("/");
     }
   };
 
