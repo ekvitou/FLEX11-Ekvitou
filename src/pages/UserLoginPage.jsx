@@ -36,12 +36,13 @@ const UserLoginPage = () => {
           const adminMsg = "Admins must log in through the admin page.";
           setError(adminMsg);
           toast.error(adminMsg); // Toast notification for Admin error
-          return; // Prevent redirecting to home page
+          return; // Do not navigate to the home page for admin
         }
 
+        // Only login and navigate to home if the user is not an admin
         login(data.accessToken);
         toast.success("Login successful!");
-        navigate("/"); // Navigate to home page
+        navigate("/"); // Navigate to home page after login for non-admin users
       } else {
         const errorMsg =
           data?.message || data?.error || "Invalid email or password";
