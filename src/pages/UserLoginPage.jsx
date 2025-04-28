@@ -9,12 +9,14 @@ const UserLoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { login } = useContext(AuthContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
+    setLoading(true);
 
     try {
       const response = await fetch(
@@ -35,25 +37,34 @@ const UserLoginPage = () => {
         if (userRoles.includes("ADMIN")) {
           const adminMsg = "Admins must log in through the admin page.";
           setError(adminMsg);
-          toast.error(adminMsg); // Toast notification for Admin error
-          return; // Do not navigate to the home page for admin
+          toast.error(adminMsg);
+          setLoading(false);
+          return;
         }
 
-        // Only login and navigate to home if the user is not an admin
         login(data.accessToken);
         toast.success("Login successful!");
-        navigate("/"); // Navigate to home page after login for non-admin users
+        navigate("/");
       } else {
         const errorMsg =
-          data?.message || data?.error || "Invalid email or password";
+          typeof data?.message === "string"
+            ? data.message
+            : typeof data?.error === "string"
+            ? data.error
+            : typeof data?.error?.description === "string"
+            ? data.error.description
+            : "Invalid email or password";
+
         setError(errorMsg);
-        toast.error(errorMsg); // Show error toast
+        toast.error(errorMsg);
       }
     } catch (err) {
       console.error(err);
       const catchMsg = "An error occurred. Please try again.";
       setError(catchMsg);
-      toast.error(catchMsg); // Toast notification for network error
+      toast.error(catchMsg);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -113,6 +124,7 @@ const UserLoginPage = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
+                  disabled={loading}
                 />
               </div>
             </div>
@@ -130,6 +142,7 @@ const UserLoginPage = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
+                  disabled={loading}
                 />
               </div>
             </div>
@@ -139,8 +152,9 @@ const UserLoginPage = () => {
             <button
               type="submit"
               className="w-full py-2 px-4 bg-[#C84A31] text-white font-semibold shadow-md hover:bg-[#D27D5D] transition"
+              disabled={loading}
             >
-              Login
+              {loading ? "Logging in..." : "Login"}
             </button>
           </form>
         </div>

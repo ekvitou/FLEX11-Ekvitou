@@ -34,6 +34,9 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Helmet from "react-helmet";
 
+// New Verify Email Page
+import VerifyEmailPage from "./pages/VerifyEmailPage"; // Import VerifyEmailPage
+
 const App = () => {
   return (
     <div className="min-h-screen flex flex-col">
@@ -87,13 +90,14 @@ const App = () => {
               </>
             }
           />
-
           {/* Public Routes */}
           <Route path="/products/:uuid" element={<ProductDetailPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<UserLoginPage />} />
           <Route path="/admin/login" element={<AdminLoginPage />} />
-
+          {/* New Route for Email Verification */}
+          <Route path="/verify-email" element={<VerifyEmailPage />} />{" "}
+          {/* New VerifyEmailPage route */}
           {/* Protected User Routes */}
           <Route
             path="/cart"
@@ -111,7 +115,6 @@ const App = () => {
               </ProtectedRoute>
             }
           />
-
           {/* Admin-Only Routes */}
           <Route
             path="/admin/dashboard"

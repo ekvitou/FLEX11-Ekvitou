@@ -10,6 +10,7 @@ const RegisterPage = () => {
     phoneNumber: "",
     password: "",
     confirmPassword: "",
+    address: {}, // Optional address
   });
 
   const [error, setError] = useState("");
@@ -29,6 +30,7 @@ const RegisterPage = () => {
     const { username, email, phoneNumber, password, confirmPassword } =
       formData;
 
+    // Password match validation
     if (password !== confirmPassword) {
       setError("Passwords do not match.");
       toast.error("Passwords do not match.");
@@ -41,13 +43,7 @@ const RegisterPage = () => {
       phoneNumber,
       password,
       confirmPassword,
-      address: {
-        addressLine1: "BKK1",
-        addressLine2: "TTP",
-        road: "200",
-        linkAddress: "",
-      },
-      profile: null,
+      address: {},
     };
 
     try {
@@ -64,7 +60,8 @@ const RegisterPage = () => {
 
       if (response.ok) {
         toast.success("Registration successful!");
-        navigate("/login");
+        // Redirect to email verification page after successful registration
+        navigate("/verify-email", { state: { email } });
       } else {
         setError(data?.message || "Registration failed.");
         toast.error(data?.message || "Registration failed.");
