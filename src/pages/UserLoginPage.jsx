@@ -36,26 +36,26 @@ const UserLoginPage = () => {
         if (userRoles.includes("ADMIN")) {
           const adminMsg = "Admins must log in through the admin page.";
           setError(adminMsg);
-          toast.error(adminMsg);
-          navigate("/"); 
+          toast.error(adminMsg); // Toast notification for Admin error
+          navigate("/");
           return;
         }
 
         login(data.accessToken);
         toast.success("Login successful!");
-        navigate("/"); 
+        navigate("/");
       } else {
         const errorMsg =
           data?.message || data?.error || "Invalid email or password";
         setError(errorMsg);
-        toast.error(errorMsg);
-        navigate("/"); 
+        toast.error(errorMsg); // Toast notification for general error
+        navigate("/");
       }
     } catch (err) {
       console.error(err);
       const catchMsg = "An error occurred. Please try again.";
       setError(catchMsg);
-      toast.error(catchMsg);
+      toast.error(catchMsg); // Toast notification for network error
       navigate("/");
     }
   };
